@@ -27,3 +27,8 @@ func NewTransaction(sellingOrder *Order, buyingOrder *Order, shares int, price f
 		DateTime:     time.Now(),
 	}
 }
+
+func (t *Transaction) Process() {
+	processor := NewOrderProcessor(t)
+	processor.Process()
+}
